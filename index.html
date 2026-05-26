@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live-Canvas  | UI-Wizard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-title">
+            <h1>THE LIVE-CANVAS: <span class="subtitle">COLLABORATIVE WHITEBOARD</span></h1>
+        </div>
+        <div class="header-logo">
+            <div class="logo-badge">UI-Wizard</div>
+        </div>
+    </header>
+    <aside class="sidebar sidebar-left">
+        <h2>COLLABORATORS</h2>
+        <div class="collaborator-list" id="collaboratorList">
+            <div class="collaborator-item">
+                <div class="avatar" style="background:#3b82f6";>A</div>
+                <div class="user-info">
+                    <span class="username">User A(You)</span>
+                    <span class="status online">Online</span>
+                </div>
+            </div>
+            <div class="collaborator-item">
+                <div class="avatar" style="background:#10b981";>B</div>
+                <div class="user-info">
+                    <span class="username">User B</span>
+                    <span class="status online">Online</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <main class="canvas-container">
+        <canvas id="drawingBoard"></canvas>
+        <div id="'cursorOverlay"></div>
+    </main>
+    <aside class="sidebar sidebar-right">
+        <label>Tool Palette</label>
+        <div class="tool-grid">
+            <button class="tool-btn active" id="btnBrush">Brush</button>
+            <button class="tool-btn" id="btnEraser">Eraser</button>
+            <button class="tool-btn" id="btnClear">Clear</button>
+        </div>
+        <div class="tool-section">
+            <label>Brush Size</label>
+            <input type="range" id="lineWidth" min="1" max="50" value="5">
+        </div>
+        <div class="tool-section">
+            <label>Color Picker</label>
+            <input type="color" id="colorPicker" value="#000000" class="color-input">
+        </div>
+        <div class="tool-section">
+            <label>Layer Manager</label>
+            <ul class="layer-list">
+                <li class="Layer-item active">Layer 1 (Base)</li>
+            </ul>
+        </div>
+    </aside>
+    <footer class="app-footer">
+        <div class="server-status">
+            <span class="status-dot connected"></span>
+            Server: Connected (32ms)
+        </div>
+        <div class="chat-toggle">
+            <button id="toggleChatBtn">Open Chat Panel</button>
+        </div>
+    </footer>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
