@@ -76,3 +76,32 @@ btnClear.addEventListener('click',() =>{
     clearLocalCanvas();
     emitClearAction();
 })
+
+// --- 2. Touch Interaction (New) ---
+canvas.addEventListener('touchstart', (e) => {
+    e.preventDefault(); // Prevents page scroll
+    const touch = e.touches[0];
+    state.isDrawing = true;
+    state.lastX = touch.clientX - canvas.getBoundingClientRect().left;
+    state.lastY = touch.clientY - canvas.getBoundingClientRect().top;
+}, { passive: false });
+
+canvas.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    if (!state.isDrawing) return;
+    
+    const touch = e.touches[0];
+    const currentX = touch.clientX - canvas.getBoundingClientRect().left;
+    const currentY = touch.clientY - canvas.getBoundingClientRect().top;
+    
+    // Call your existing draw logic
+    const isEraser = state.currentTool === 'eraser';
+    drawLine(state.lastX, state.lastY, currentX, currentY, state.color, state.lineWidth, isEraser);
+    
+    emitDrawAction({ /* ... your emit data ... */ });
+    
+    state.lastX = currentX;
+    state.lastY = currentY;
+}, { passive: false });
+
+canvas.addEventListener('touchend', () => state.isDrawing = false);
