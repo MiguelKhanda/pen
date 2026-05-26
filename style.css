@@ -253,3 +253,31 @@ input[type="range"]{
     background-color: var(--status-online);
     box-shadow: 0 0 8px var(--status-online);
 }
+
+
+/* Default: Desktop (Wide) */
+.layout-container {
+    display: grid;
+    grid-template-columns: 250px 1fr 250px; /* Big sidebars */
+    height: 100vh;
+}
+
+/* Tablet (Narrower screens) */
+@media (max-width: 1024px) {
+    .layout-container {
+        /* Shrink sidebars to 150px or use a smaller fraction */
+        grid-template-columns: 150px 1fr 150px; 
+    }
+}
+
+/* Mobile (Very small screens) */
+@media (max-width: 768px) {
+    .layout-container {
+        /* Stack everything vertically so sidebars don't squish the content */
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "sidebar-left"
+            "main"
+            "sidebar-right";
+    }
+}
